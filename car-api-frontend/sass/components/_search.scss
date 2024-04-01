@@ -1,0 +1,32 @@
+/* Search Input Styling */
+.search-input {
+    font-size: 16px; /* Increase font size for better readability */
+    padding: 10px 15px; /* Add some padding inside the input */
+    width: 100%; /* Full width to fit the container */
+    margin-bottom: 20px; /* Add some space below the input */
+    border: 2px solid #dfe1e5; /* Light grey border */
+    border-radius: 24px; /* Rounded borders for a modern look */
+    outline: none; /* Remove the default focus outline */
+    box-shadow: none; /* Remove any default shadows */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for interactions */
+  }
+  
+  .search-input:focus {
+    border-color: #4285f4; /* Highlight color when focused */
+    box-shadow: 0 1px 6px rgba(32,33,36,0.28); /* Subtle shadow on focus */
+  }
+  
+  /* Optional: Add a search icon inside the input */
+  .search-input::placeholder {
+    font-family: "Lato", sans-serif;
+    color: #909090; /* Light color for placeholder text */
+  }
+  
+  /* Optional: Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .search-input {
+      font-size: 14px; /* Slightly smaller font size on smaller screens */
+      padding: 8px 12px; /* Adjust padding accordingly */
+    }
+  }
+  
