@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>car API</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato%7CRaleway" rel="stylesheet">
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+    <div class="grid-con" id="app">
+        <div class="col-span-full l-col-span-full">
+            <h2>Available Cars</h2>
+            <p>Browse our collection of cars and click for more details.</p>
+        </div>
+        <div class="col-span-full m-col-span-6 l-col-span-6">
+            <input type="text" v-model="searchQuery" placeholder="Search cars..." class="search-input">
+            <ul id="car-list">
+                <li v-for="car in filteredCarsData" :key="car.id">
+                    <h3>{{ car.make }} {{ car.model }}</h3>
+                    <h4>Year: {{ car.year }}</h4>
+                    <h4>Category: {{ car.category }}</h4>
+                    <button @click="getCarDetails(car.id)">View Details</button>
+                </li>
+            </ul>
+        </div>
+        <div v-if="isLoading" class="loading-overlay">
+            Loading cars...
+        </div>
+
+        <div class="col-span-full m-col-span-6 l-col-span-6" id="carInfoCon" v-if="selectedCar">
+            <div v-if="error" class="error-message">{{error}}</div>
+            <div v-if="selectedCar" id="car-details">
+                <h3>{{ selectedCar.full_name }}</h3>
+                <img v-bind:src="selectedCar.image_url" alt="Car Image" v-if="selectedCar.image_url">
+
+                <p>Make: {{ selectedCar.make }}</p>
+                <p>Model: {{ selectedCar.model }}</p>
+                <p>Year: {{ selectedCar.year }}</p>
+                <p>Category: {{ selectedCar.category }}</p>
+                <p>Safety Rating: {{ selectedCar.safety_rating }}</p>
+                <p>Price Range: {{ selectedCar.price_range }}</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
